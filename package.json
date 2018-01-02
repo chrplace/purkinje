@@ -1,0 +1,20 @@
+{
+  "name": "purkinje",
+  "version": "1.0.0",
+  "description": "workout planner and journal for coaches and athletes",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Christian Place Pedersen",
+  "license": "ISC",
+  "keywords": []
+}
