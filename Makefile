@@ -1,7 +1,7 @@
 .PHONY: docs venv nodeenv
 
 PYTHON=/usr/bin/python3
-VENV=env
+VENV=${PWD}/venv
 VENV_PY=$(VENV)/bin/python
 VENV_PIP=$(VENV)/bin/pip
 VENV_ACT=$(VENV)/bin/activate
@@ -32,9 +32,21 @@ node_modules/.touch: $(VENV)/bin/npm package.json
 	$(VENV)/bin/npm install"
 	touch $@
 
+web: web/package-lock.json
+web/package-lock.json: $(VENV)/bin/npm
+	bash -c "source $(VENV_ACT); \
+		cd web; \
+		$(VENV)/bin/npm install"
+
+web-serve: web/package-lock.json
+	bash -c "source $(VENV_ACT); \
+		cd web; \
+		$(VENV)/bin/npm start"
+
 clean: 
 distclean: clean
 	rm -rf $(VENV) node_modules docs package-lock.json
+	rm -rf web/node_modules/ web/package-lock.json 
 
 docs: $(VENV_ACT)
 	bash -c "source $(VENV_ACT); \
